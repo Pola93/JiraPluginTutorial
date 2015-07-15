@@ -1,0 +1,41 @@
+<!DOCTYPEhtml>
+<html lang="en">
+<head>
+<meta name="decorator" content="atl.general">
+    $webResourceManager.requireResource("cokolwiek.restCokolwiek:restCokolwiek-resources")
+</head>
+<body>
+<div id="main">
+    <h1>$MojSearch</h1>
+    <div id="result">
+        <input id="resultBox" type="text" placeholder="Result"/>
+    </div>
+
+    <div id="input">
+        <input name="diceCount" type="number"/>
+        <select>
+            <option value="4">k4</option>
+            <option value="6">k6</option>
+            <option value="8">k8</option>
+            <option value="10">k10</option>
+            <option value="12">k12</option>
+            <option value="20">k20</option>
+        </select>
+    </div>
+
+    <div id="controls">
+        <button id="roll">Roll</button>
+    </div>
+
+    <div id="restDiv">
+        <input id="restInput" type="text" placeholder="Fraza do wyszukania" />
+        <button id="restSubmitButton">Submit</button>
+        <div id="restResult">
+            <p>
+                !!!!!!!!!!!!!!!!!!!sdfs
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
