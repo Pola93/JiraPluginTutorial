@@ -25,7 +25,6 @@ myApp.roll=function(event){
 myApp.submit = function(event){
     
     var input = AJS.$("#restInput"),
-//        summary = AJS.$("#search-tutorial-results-summary"),
         results = AJS.$("#restResult > p");
 
     AJS.$.ajax({
@@ -35,8 +34,9 @@ myApp.submit = function(event){
         async: false,
         dataType: 'json',
         success: function(response) {
-            results.html("");
-            results.append(JSON.stringify(response));
+            results.text("");
+            results.append("Czas wyszukiwania: " + response.searchTime + " ms");
+            //JAK CZYSCIC <p> BEZ WYWALANIE Z NIEGO JEGO ZNACZNIKOW
 //            results.empty();
 //            summary.text(AJS.format(AJS.params.searchSummary,
 //                response.matches.length,
