@@ -80,6 +80,7 @@ public class SearchServlet extends HttpServlet{
                 
                 String textToRender = "hakunamatata";
                 rendererContext.put("MojSearch", textToRender);
+                rendererContext.put("searchTimeOfSearchFormat", "Found '{0}' result(s) in '{1}' ms.");
 
                 VelocityEngine ve = new VelocityEngine();
 

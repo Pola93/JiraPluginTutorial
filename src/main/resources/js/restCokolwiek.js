@@ -36,6 +36,10 @@ myApp.submit = function(event){
         success: function(response) {
             results.text("");
             results.append("Czas wyszukiwania: " + response.searchTime + " ms");
+            results.append(AJS.format(AJS.params.searchTimeOfSearchFormat,
+                response.matches.length,
+                response.searchTime));
+            //ZAPYTAC CZEMU FORMATKA NIE WCHODZI
             //JAK CZYSCIC <p> BEZ WYWALANIE Z NIEGO JEGO ZNACZNIKOW
 //            results.empty();
 //            summary.text(AJS.format(AJS.params.searchSummary,

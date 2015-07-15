@@ -31,8 +31,11 @@
         <input id="restInput" type="text" placeholder="Fraza do wyszukania" />
         <button id="restSubmitButton">Submit</button>
         <div id="restResult">
-            <p>
-            </p>
+            <p></p>
+            <input type="hidden" 
+                value="$searchTimeOfSearchFormat"
+                name="searchTimeOfSearchFormat" 
+                id="searchTimeOfSearchFormat"/>
         </div>
     </div>
 </div>
