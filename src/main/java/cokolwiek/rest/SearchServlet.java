@@ -6,6 +6,7 @@
 package cokolwiek.rest;
 
 import com.atlassian.sal.api.auth.LoginUriProvider;
+import com.atlassian.sal.api.message.I18nResolver;
 import com.atlassian.sal.api.user.UserManager;
 import com.atlassian.templaterenderer.TemplateRenderer;
 import static com.google.common.base.Preconditions.checkNotNull;
@@ -40,24 +41,27 @@ public class SearchServlet extends HttpServlet{
     private final TemplateRenderer renderer;
     private final UserManager userManager;
     private final LoginUriProvider loginUriProvider;
+    private final I18nResolver i18nResolver;
     
     private static final Map<String, Object> rendererContext = new HashMap<String, Object>();
     Logger log = Logger.getLogger(SearchServlet.class.getName());
 
     public SearchServlet(TemplateRenderer renderer,
             UserManager userManager,
-            LoginUriProvider loginUriProvider) {
+            LoginUriProvider loginUriProvider,
+            I18nResolver i18nResolver
+    ) {
         this.renderer = checkNotNull(renderer, "renderer");
         this.userManager = checkNotNull(userManager, "userManager");
         this.loginUriProvider = checkNotNull(loginUriProvider, "loginUriProvider");
+        this.i18nResolver = checkNotNull(i18nResolver, "i18nResolver");
     }
     
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-//        URI base = URI.create("C:\\Users\\polkam\\Desktop\\JIRARestTut\\restPowtorka\\restCokolwiek\\src\\main\\java\\cokolwiek\\rest");
-//        URI absolute = URI.create("C:\\Users\\polkam\\Desktop\\JIRARestTut\\restPowtorka\\restCokolwiek\\src\\main\\resources\\restCokolwiek.properties");
-//        URI relative = base.relativize(absolute);
+
+        System.out.println(i18nResolver.getText("search.timeOfSearchFormat").toString() + " !!asdqwq!!");
        
         try{
             if (userManager.getRemoteUsername(req) == null) {
@@ -86,7 +90,7 @@ public class SearchServlet extends HttpServlet{
                 }
 
                 rendererContext.put("MojSearch", textToRender);
-                rendererContext.put("searchTimeOfSearchFormat", formatterOfSearchTime);
+                rendererContext.put("searchFormatOfsearchTime", formatterOfSearchTime);
 
                 VelocityEngine ve = new VelocityEngine();
 

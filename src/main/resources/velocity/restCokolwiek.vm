@@ -31,11 +31,13 @@
         <input id="restInput" type="text" placeholder="Fraza do wyszukania" />
         <button id="restSubmitButton">Submit</button>
         <div id="restResult">
-            <p></p>
+            <p>
+                $i18n.getText("search.timeOfSearchFormat")
+            </p>
             <input type="hidden" 
-                value="$searchTimeOfSearchFormat"
-                name="searchTimeOfSearchFormat" 
-                id="searchTimeOfSearchFormat"/>
+                value="$searchFormatOfsearchTime"
+                name="searchFormatOfsearchTime" 
+                id="searchFormatOfsearchTime"/>
         </div>
     </div>
 </div>
