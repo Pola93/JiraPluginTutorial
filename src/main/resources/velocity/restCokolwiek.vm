@@ -32,12 +32,12 @@
         <button id="restSubmitButton">Submit</button>
         <div id="restResult">
             <p>
-                $i18n.getText("search.timeOfSearchFormat")
             </p>
-            <input type="hidden" 
-                value="$searchFormatOfsearchTime"
-                name="searchFormatOfsearchTime" 
-                id="searchFormatOfsearchTime"/>
+            <form id="parameterContainer">
+                <fieldset class="hidden parameters">
+                    <input type="hidden" title="searchFormatOfsearchTime" value="$i18n.getText("search.timeOfSearchFormat")">
+                </fieldset>
+            </form>
         </div>
     </div>
 </div>
