@@ -60,4 +60,8 @@
   <component-import
       key="login-uri-provider"
       interface="com.atlassian.sal.api.auth.LoginUriProvider" />
+  <template-context-item
+      key="search-resource-context-item"
+      class="cokolwiek.rest.resources.MojaKlasa"
+      context-key="contextToMojaKlasa" />
 </atlassian-plugin>

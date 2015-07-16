@@ -60,8 +60,6 @@ public class SearchServlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-
-        System.out.println(i18nResolver.getText("search.timeOfSearchFormat").toString() + " !!asdqwq!!");
        
         try{
             if (userManager.getRemoteUsername(req) == null) {

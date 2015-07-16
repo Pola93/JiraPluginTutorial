@@ -32,11 +32,11 @@
         <button id="restSubmitButton">Submit</button>
         <div id="restResult">
             <p>
-                $i18n.getText("search.timeOfSearchFormat")
             </p>
             <form id="parameterContainer">
                 <fieldset class="hidden parameters">
                     <input type="hidden" title="searchFormatOfsearchTime" value="$i18n.getText("search.timeOfSearchFormat")">
+                    <input type="hidden" value="$contextToMojaKlasa.buildSelfLink("{0}")" name="searchResourceURI" id="searchResourceURI">
                 </fieldset>
             </form>
         </div>

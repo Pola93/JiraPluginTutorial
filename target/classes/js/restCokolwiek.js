@@ -28,14 +28,13 @@ myApp.submit = function(event){
         results = AJS.$("#restResult > p");
 
     AJS.$.ajax({
-        url: '/rest/mojaklasa/1.0/' + input.val(),
+        url: AJS.format(decodeURI(AJS.params.searchResourceURI), input.val()),
         type: 'get',
         cache: false,
         async: false,
         dataType: 'json',
         success: function(response) {
             results.text("");
-//            results.append("Czas wyszukiwania: " + response.searchTime + " ms");
             results.append(AJS.format(AJS.params.searchFormatOfsearchTime,
                 response.matches.length,
                 response.searchTime));

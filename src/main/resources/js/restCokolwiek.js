@@ -28,7 +28,7 @@ myApp.submit = function(event){
         results = AJS.$("#restResult > p");
 
     AJS.$.ajax({
-        url: '/rest/mojaklasa/1.0/' + input.val(),
+        url: AJS.format(decodeURI(AJS.params.searchResourceURI), input.val()),
         type: 'get',
         cache: false,
         async: false,
