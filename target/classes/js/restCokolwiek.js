@@ -39,7 +39,7 @@ myApp.submit = function(event){
             results.append(AJS.format(AJS.params.searchTimeOfSearchFormat,
                 response.matches.length,
                 response.searchTime));
-            
+            //ZAPYTAC CZEMU FORMATKA NIE WCHODZI
             //JAK CZYSCIC <p> BEZ WYWALANIE Z NIEGO JEGO ZNACZNIKOW
 //            results.empty();
 //            summary.text(AJS.format(AJS.params.searchSummary,

@@ -12,6 +12,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.net.URI;
@@ -53,34 +54,39 @@ public class SearchServlet extends HttpServlet{
     
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {   
+            throws ServletException, IOException {
+//        URI base = URI.create("C:\\Users\\polkam\\Desktop\\JIRARestTut\\restPowtorka\\restCokolwiek\\src\\main\\java\\cokolwiek\\rest");
+//        URI absolute = URI.create("C:\\Users\\polkam\\Desktop\\JIRARestTut\\restPowtorka\\restCokolwiek\\src\\main\\resources\\restCokolwiek.properties");
+//        URI relative = base.relativize(absolute);
+       
         try{
             if (userManager.getRemoteUsername(req) == null) {
-//                PrintStream printStream = new PrintStream("mojsysout.txt");
-//                printStream.print("jestem w ife");
-//                printStream.flush();
-//                printStream.close();
+                System.out.println("jestem w ifie");
                 
                 URI reqUri = new URI(req.getRequestURI().toString());
                 URI loginUri = loginUriProvider.getLoginUri(reqUri);
                 resp.sendRedirect(loginUri.toASCIIString());
             } else {
-//                PrintStream printStream = new PrintStream("mojsysout.txt");
-//                printStream.print("jestem w elsie");
-//                printStream.flush();
-//                printStream.close();
-//                File file = new File("\\restCokolwiek.properties");
-//                FileInputStream fileInput = new FileInputStream(file);
-//                Properties properties = new Properties();
-//                properties.load(fileInput);
-//                fileInput.close();
-//                String textToRender = properties.getProperty("search.title");
-//        
-//                log.log(Level.INFO, textToRender + " moj log");
+                System.out.println("jestem w elsie");
+                InputStream is = getClass().getClassLoader().getResourceAsStream("restCokolwiek.properties");
+                String textToRender,
+                       formatterOfSearchTime;
                 
-                String textToRender = "hakunamatata";
+                if (is!=null)
+                {
+                    Properties properties = new Properties();
+                    properties.load(is);
+                    is.close();
+                    textToRender = properties.getProperty("search.title");
+                    formatterOfSearchTime = properties.getProperty("search.timeOfSearchFormat");
+                }
+                else{
+                    textToRender = "hakunamatata";
+                    formatterOfSearchTime = "";
+                }
+
                 rendererContext.put("MojSearch", textToRender);
-                rendererContext.put("searchTimeOfSearchFormat", "Found '{0}' result(s) in '{1}' ms.");
+                rendererContext.put("searchTimeOfSearchFormat", formatterOfSearchTime);
 
                 VelocityEngine ve = new VelocityEngine();
 
