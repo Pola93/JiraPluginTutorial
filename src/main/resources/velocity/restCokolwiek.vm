@@ -24,12 +24,12 @@
     </div>
 
     <div id="controls">
-        <button id="roll">Roll</button>
+        <button class="aui-button" id="roll">Roll</button>
     </div>
 
     <div id="restDiv">
         <input id="restInput" type="text" placeholder="Fraza do wyszukania" />
-        <button id="restSubmitButton">Submit</button>
+        <button class="aui-button" id="restSubmitButton">Submit</button>
         <div id="restResult">
             <p>
             </p>
