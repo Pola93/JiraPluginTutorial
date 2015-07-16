@@ -5,42 +5,44 @@
     $webResourceManager.requireResource("cokolwiek.restCokolwiek:restCokolwiek-resources")
 </head>
 <body>
-<div id="main">
-    <h1>$MojSearch</h1>
-    <div id="result">
-        <input id="resultBox" type="text" placeholder="Result"/>
-    </div>
+<form class="aui">
+    <div id="main">
+        <h1>$MojSearch</h1>
+        <div id="result">
+            <input id="resultBox" type="text" placeholder="Result"/>
+        </div>
 
-    <div id="input">
-        <input name="diceCount" type="number"/>
-        <select>
-            <option value="4">k4</option>
-            <option value="6">k6</option>
-            <option value="8">k8</option>
-            <option value="10">k10</option>
-            <option value="12">k12</option>
-            <option value="20">k20</option>
-        </select>
-    </div>
+        <div id="input">
+            <input name="diceCount" type="number"/>
+            <select>
+                <option value="4">k4</option>
+                <option value="6">k6</option>
+                <option value="8">k8</option>
+                <option value="10">k10</option>
+                <option value="12">k12</option>
+                <option value="20">k20</option>
+            </select>
+        </div>
 
-    <div id="controls">
-        <button class="aui-button" id="roll">Roll</button>
-    </div>
+        <div id="controls">
+            <button class="aui-button" id="roll">Roll</button>
+        </div>
 
-    <div id="restDiv">
-        <input id="restInput" type="text" placeholder="Fraza do wyszukania" />
-        <button class="aui-button" id="restSubmitButton">Submit</button>
-        <div id="restResult">
-            <p>
-            </p>
-            <form id="parameterContainer">
-                <fieldset class="hidden parameters">
-                    <input type="hidden" title="searchFormatOfsearchTime" value="$i18n.getText("search.timeOfSearchFormat")">
-                    <input type="hidden" value="$contextToMojaKlasa.buildSelfLink("{0}")" name="searchResourceURI" id="searchResourceURI">
-                </fieldset>
-            </form>
+        <div id="restDiv">
+            <input id="restInput" type="text" placeholder="Fraza do wyszukania" />
+            <button class="aui-button" id="restSubmitButton">Submit</button>
+            <div id="restResult">
+                <p>
+                </p>
+                <form id="parameterContainer">
+                    <fieldset class="hidden parameters">
+                        <input type="hidden" title="searchFormatOfsearchTime" value="$i18n.getText("search.timeOfSearchFormat")">
+                        <input type="hidden" value="$contextToMojaKlasa.buildSelfLink("{0}")" name="searchResourceURI" id="searchResourceURI">
+                    </fieldset>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+</form>
 </body>
 </html>
