@@ -35,8 +35,10 @@
     <dependency>com.atlassian.auiplugin:ajs</dependency>
     <resource type="download" name="restCokolwiek.css" location="/css/restCokolwiek.css"/>
     <resource type="download" name="restCokolwiek.js" location="/js/restCokolwiek.js"/>
+    <resource type="download" name="addButton.js" location="/js/addButton.js"/>
     <resource type="download" name="images/" location="/images"/>
     <context>restCokolwiek</context>
+    <context>jira.general</context>
   </web-resource>
   <!-- publish our component -->
   <component key="myPluginComponent" class="cokolwiek.MyPluginComponentImpl" public="true">
