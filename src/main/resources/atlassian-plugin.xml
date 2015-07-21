@@ -31,12 +31,34 @@
   </web-item>
   
   <!-- add our web resources -->
+<!--    <web-resource key="soy-templates">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        <dependency>com.atlassian.soy.soy-template-plugin:soy-deps</dependency>
+
+         Available to the server-side only 
+        <resource type="soy" name="links" location="/js/templates/copyDialog.soy"/>
+         Make available to the client-side in JS as well... 
+        <transformation extension="soy">
+            <transformer key="soyTransformer"/>
+        </transformation>
+        <resource type="download" name="copyDialog.soy.js" location="/js/templates/copyDialog.soy"/>
+    <context>restCokolwiek</context>
+    <context>jira.general</context>
+    </web-resource>-->
   <web-resource key="restCokolwiek-resources" name="restCokolwiek Web Resources">
     <dependency>com.atlassian.auiplugin:ajs</dependency>
+    <dependency>com.atlassian.soy.soy-template-plugin:soy-deps</dependency>
     <resource type="download" name="restCokolwiek.css" location="/css/restCokolwiek.css"/>
     <resource type="download" name="restCokolwiek.js" location="/js/restCokolwiek.js"/>
     <resource type="download" name="addButton.js" location="/js/addButton.js"/>
     <resource type="download" name="images/" location="/images"/>
+   
+    <transformation extension="soy">
+        <transformer key="soyTransformer"/>
+    </transformation> 
+    <resource type="download" name="jakis-TamSoy.js" location="js/templates/copyDialog.soy"/>
+    
+    
     <context>restCokolwiek</context>
     <context>jira.general</context>
   </web-resource>
