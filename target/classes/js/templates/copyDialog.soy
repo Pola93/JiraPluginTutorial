@@ -1,6 +1,20 @@
 {namespace CopyDialog.Template}
 /**
+* Creates collection of <input> elements containing fields
+* @param fieldsToCopy - fields to copy
+* @param uniqueID - unique id addition
 */
 {template .createSubtaskExtenderDialog}
-    <h1>Moj dialog biaaaaacz</h1>
+
+    <fieldset class="group">
+        <legend><span>Check task's fields to copy to subtask:</span></legend>
+        <br/>
+        {foreach $field in $fieldsToCopy}
+            <div class="checkbox">
+                <input class="checkbox" type="checkbox" name="{$field}" id="{$field}{$uniqueID}">
+                <label for="{$field}">{$field}</label>
+            </div> 
+        {/foreach}                            
+    </fieldset>
+
 {/template}
