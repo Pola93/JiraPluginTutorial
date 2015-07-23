@@ -18,30 +18,32 @@ subtaskPopulateApp.addButton = function(){
     }, 100);   
 }
 
-subtaskPopulateApp.myFields = {
-    id: "1234",
-    summary: "moje summary",
-    description: "moje description"
-};
-
-subtaskPopulateApp.keyArray;
+subtaskPopulateApp.valuesArray = [];
+subtaskPopulateApp.idValueArrayForSoy = [];
 subtaskPopulateApp.uniqueIDAddition = "CopyCheckbox";
 
 subtaskPopulateApp.addPopUp = function(){
-    var dialog = new AJS.Dialog(500, 500);
-    subtaskPopulateApp.keyArray = [];
-    
-    AJS.$.each( subtaskPopulateApp.myFields, function( key, value ) {
-        subtaskPopulateApp.keyArray.push(key);
+    subtaskPopulateApp.valuesArray = [];
+    subtaskPopulateApp.idValueArrayForSoy = [];
+    AJS.$(".form-body .field-group label").map(function(){
+        subtaskPopulateApp.valuesArray.push(AJS.$(this).text());
     });
+    subtaskPopulateApp.parseLabels();
     
-    var template = CopyDialog.Template.createSubtaskExtenderDialog({fieldsToCopy: subtaskPopulateApp.keyArray, uniqueID: subtaskPopulateApp.uniqueIDAddition});
+    for(var i = 0; i < subtaskPopulateApp.valuesArray.length; i++){
+        subtaskPopulateApp.idValueArrayForSoy.push({id: subtaskPopulateApp.valuesArray[i],
+            value: subtaskPopulateApp.parseString(subtaskPopulateApp.valuesArray[i])});
+    }
+    
+    var dialog = new AJS.Dialog(500, 500);
+    
+    var template = CopyDialog.Template.createSubtaskExtenderDialog({fieldsToCopy: subtaskPopulateApp.idValueArrayForSoy, uniqueID: subtaskPopulateApp.uniqueIDAddition});
     dialog.addHeader("Subtask's field's filler", "aui-dialog2-header");
     dialog.addPanel("Panel 1", template, "panel-body");
     dialog.addButton("Copy", function (){
-        AJS.$.each(subtaskPopulateApp.keyArray, function (index, value){
-            if (AJS.$("#" + value + subtaskPopulateApp.uniqueIDAddition).prop("checked") ){
-                console.log("#" + value + subtaskPopulateApp.uniqueIDAddition);
+        AJS.$.each(subtaskPopulateApp.idValueArrayForSoy, function (index, value){
+            if (AJS.$("#" + value.value + subtaskPopulateApp.uniqueIDAddition).prop("checked") ){
+                console.log("#" + value.value + subtaskPopulateApp.uniqueIDAddition);
             }
         }); 
     dialog.remove();    
@@ -53,4 +55,22 @@ subtaskPopulateApp.addPopUp = function(){
     dialog.gotoPage(0);
     dialog.gotoPanel(0);
     dialog.show();
+};
+
+subtaskPopulateApp.parseLabels = function(){
+    subtaskPopulateApp.valuesArray.splice(0, 2); // usuwam pierwsze dwa elementy bo nie wiadomo sk¹d siê bior¹
+    
+    for(var i=0; i < subtaskPopulateApp.valuesArray.length; i++) {
+        subtaskPopulateApp.valuesArray[i] = subtaskPopulateApp.valuesArray[i].replace("Required", "");
+    }
+    subtaskPopulateApp.valuesArray = _.reject(subtaskPopulateApp.valuesArray, function (value){
+            return value.indexOf("Estimate") >= 0;
+    });
+};
+
+subtaskPopulateApp.parseString = function(value){
+    value = value.replace(" ", "");
+    value = value.replace("/", "");
+    value = value.toLowerCase();
+    return value;
 };

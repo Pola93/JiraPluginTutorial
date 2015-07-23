@@ -11,8 +11,8 @@
         <br/>
         {foreach $field in $fieldsToCopy}
             <div class="checkbox">
-                <input class="checkbox" type="checkbox" name="{$field}" id="{$field}{$uniqueID}">
-                <label for="{$field}">{$field}</label>
+                <input class="checkbox" type="checkbox" name="{$field.value}" id="{$field.value}{$uniqueID}">
+                <label for="{$field.value}{$uniqueID}">{$field.id}</label>
             </div> 
         {/foreach}                            
     </fieldset>
